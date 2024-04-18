@@ -239,14 +239,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89f9c624f3342d46bb2ba4c57fe0527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 200
+  walkSpeed: 600
   jumpForce: 50
   OnGround: 1
   Jumping: 0
   triggerJump: {fileID: 0}
   cameraShoulder: {fileID: 5394677052067438273}
   cameraHolder: {fileID: 9166092385288474884}
-  RotationSpeed: 200
+  RotationSpeed: 500
   minAngle: -45
   maxAngle: 45
-  cameraSpeed: 200
+  cameraSpeed: 500
