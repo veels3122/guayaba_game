@@ -11,12 +11,12 @@ public class playercontroller : MonoBehaviour
 
     public float walkSpeed = 200;
 
-    public float jumpForce = 50;
+    bool isJump = false;
+    public float JumpForce = 5;
 
-    public bool OnGround = true;
-    public bool Jumping;
+    bool floorDetected = false;
 
-    public GameObject triggerJump;
+
 
     //camara 3D
     public Transform cameraShoulder;  //eje de la camara
@@ -57,27 +57,49 @@ public class playercontroller : MonoBehaviour
     void Update()
     {
         MoveControl();
-        ActionControl();
         CameraControl();
         AnimControl();
+
+        ActionsControl();
         
+    }
+    public void ActionsControl()
+    {
+        Vector3 floor = transform.TransformDirection(Vector3.down);
+
+        if (Physics.Raycast(transform.position, floor, 0.5f))
+        {
+            floorDetected = true;
+            print("contacto con el suelo");
+        }
+        else
+        {
+            floorDetected= false;
+            print("no hay contacto con el suelo");
+        }
+
+        isJump = Input.GetButtonDown("Jump");
+        if (isJump && floorDetected)
+        {
+            rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
+
+        }
     }
 
     public void MoveControl()
     {
         float deltaX = Input.GetAxis("Horizontal");
-        float deltaY = Input.GetAxis("Vertical");
+        float deltaZ = Input.GetAxis("Vertical");
         float deltaT = Time.deltaTime;
 
-        animSpeed = new Vector2(deltaX, deltaY);
+        animSpeed = new Vector2(deltaX, deltaZ);
         Vector3 side = walkSpeed * deltaX * deltaT * tr.right;
-        Vector3 forward = walkSpeed * deltaY * deltaT * tr.forward;
+        Vector3 forward = walkSpeed * deltaZ * deltaT * tr.forward;
 
         Vector3 direction = side + forward;
         direction.y = rb.velocity.y;
+        rb.velocity = direction;
 
-
-        
 
     }
     public void CameraControl()
@@ -103,26 +125,11 @@ public class playercontroller : MonoBehaviour
     }
     public void AnimControl()
     {
-        anim.SetBool("ground", OnGround);
+        anim.SetBool("floor", floorDetected);
 
         anim.SetFloat("X", animSpeed.x);
         anim.SetFloat("Y", animSpeed.y);
 
     }
-    public void ActionControl()
-    {
-        //salto
-        Jumping = Input.GetKey(KeyCode.Space);
-
-        if (OnGround)
-        {
-            if (Jumping)
-            {
-                rb.AddForce(transform.up * jumpForce);
-            }
-
-        }
-
-
-    }
+   
 }
