@@ -10,13 +10,17 @@ public class playercontroller : MonoBehaviour
     Rigidbody rb;
 
     public float walkSpeed = 200;
+   
+    
 
     bool isJump = false;
     public float JumpForce = 5;
 
     bool floorDetected = false;
 
-
+    //correr
+    public int VelRun;
+    public float x, y;
 
     //camara 3D
     public Transform cameraShoulder;  //eje de la camara
@@ -62,10 +66,13 @@ public class playercontroller : MonoBehaviour
 
         ActionsControl();
         
+     
+        
     }
     public void ActionsControl()
     {
-        Vector3 floor = transform.TransformDirection(Vector3.down);
+        Vector3 floor = transform.TransformDirection(Vector3.down); 
+      
 
         if (Physics.Raycast(transform.position, floor, 0.5f))
         {
@@ -82,6 +89,27 @@ public class playercontroller : MonoBehaviour
         if (isJump && floorDetected)
         {
             rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
+
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            walkSpeed = VelRun;
+            cameraSpeed = 1200;
+
+            
+                anim.SetBool("run", true);
+            
+            
+            
+             
+            
+        }
+        else
+        {
+            anim.SetBool("run", false);
+            walkSpeed = 300;
+            cameraSpeed = 200;
 
         }
     }

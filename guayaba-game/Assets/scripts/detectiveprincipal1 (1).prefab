@@ -241,6 +241,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 400
   JumpForce: 6
+  VelRun: 1200
+  x: 0
+  y: 0
   cameraShoulder: {fileID: 5394677052067438273}
   cameraHolder: {fileID: 9166092385288474884}
   RotationSpeed: 200
