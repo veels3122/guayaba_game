@@ -18,7 +18,7 @@ public class VolumeScript : MonoBehaviour
 
     public void ChangeSlider(float value)
     {
-        slider.value = value;
+        sliderValue = value;
         PlayerPrefs.SetFloat("volumenAudio", sliderValue);
         AudioListener.volume = slider.value;
         RevisarMute();
@@ -36,4 +36,8 @@ public class VolumeScript : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        RevisarMute();
+    }
 }
