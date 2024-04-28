@@ -18,17 +18,11 @@ public class NewBehaviourScript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Untagged")
-        {
-            player.OnGround = true;
-        }
+       
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Untagged")
-        {
-            player.OnGround = false;
-        }
+        
         
     }
 
