@@ -10,7 +10,7 @@ public class Object : MonoBehaviour
 
 
 public GameObject Handpoint;
-private GameObject pickedObject = null;
+//private GameObject pickedObject = null;
 
 
 

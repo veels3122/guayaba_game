@@ -8,6 +8,7 @@ TagManager:
   - floor
   - object
   - interact
+  - no_guayaba
   layers:
   - Default
   - TransparentFX

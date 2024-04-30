@@ -1,27 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class selected : MonoBehaviour
 {
     LayerMask mask;
-    public float distancia = 10f;
+    public float distancia = 8;
 
     public Texture2D puntero;
     public GameObject TextDetect;
-    public GameObject TextDetectFalse;
     GameObject ultimoreconocido = null;
 
-
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         mask = LayerMask.GetMask("raycast detect");
         TextDetect.SetActive(false);
-        TextDetectFalse.SetActive(false);
-
+        
     }
 
     // Update is called once per frame
@@ -29,18 +29,28 @@ public class selected : MonoBehaviour
     {
         //raycast
         RaycastHit hit;
-
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distancia, mask))
         {
+            //aqui se agregan los tipos de colores que se quieran que tengan lso objetos con sus tag
             Deselected();
-            SelectedObject(hit.transform);
-
-            if(hit.collider.tag == "interact")
+            if (hit.collider.tag == "object")
             {
-                if(Input.GetKeyDown(KeyCode.E)) 
-                {
-                    hit.collider.transform.GetComponent<ObjectInt>().ActivateObject();
+               
+                SelectedObject(hit.transform);
+                OnGUI();
+                
 
+            }
+
+            if (hit.collider.tag == "interact")
+            {
+             SelectedObjectNT(hit.transform);
+                
+                if (Input.GetKeyDown(KeyCode.E)) 
+                {
+                    
+                    hit.collider.transform.GetComponent<ObjectInt>().ActivateObject();
+                    
 
                 }
             }
@@ -54,7 +64,11 @@ public class selected : MonoBehaviour
 
 
     }
-
+    private void SelectedObjectNT(Transform transform)
+    {
+        transform.GetComponent<MeshRenderer>().material.color = Color.red;
+        ultimoreconocido = transform.gameObject;
+    }
     private void SelectedObject(Transform transform) 
     {
         transform.GetComponent<MeshRenderer>().material.color = Color.green;
@@ -70,12 +84,11 @@ public class selected : MonoBehaviour
             ultimoreconocido = null;
         }
     }
-
-    void OnGUI()
+    private void OnGUI()
     {
         Rect rect = new Rect(Screen.width / 2, Screen.height / 2, puntero.width, puntero.height);
         GUI.DrawTexture(rect, puntero); 
-
+        
         if (ultimoreconocido)
         {
             TextDetect.SetActive(true);

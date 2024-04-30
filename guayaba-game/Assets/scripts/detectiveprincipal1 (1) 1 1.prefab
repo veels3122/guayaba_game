@@ -137,6 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9127955238056626578}
   - component: {fileID: 3393073587129728467}
+  - component: {fileID: 6959957129508138260}
   m_Layer: 0
   m_Name: cameraShoulder (1)
   m_TagString: Untagged
@@ -176,6 +177,21 @@ MonoBehaviour:
   distancia: 6
   puntero: {fileID: 2800000, guid: 98fa69bd52405464385205f677ce1baf, type: 3}
   TextDetect: {fileID: 0}
+--- !u!114 &6959957129508138260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8435539374034984636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22dfcf3e6531d8a49a602a3bbac3d6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distancia: 6
+  puntero: {fileID: 2800000, guid: 98fa69bd52405464385205f677ce1baf, type: 3}
+  TextDetectFalse: {fileID: 0}
 --- !u!1 &8610524271999670637
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89f9c624f3342d46bb2ba4c57fe0527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distancia: 8
   walkSpeed: 350
   JumpForce: 400
   VelRun: 800

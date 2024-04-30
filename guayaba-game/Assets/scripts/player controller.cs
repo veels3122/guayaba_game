@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class playercontroller : MonoBehaviour
 {
+    //probe mano
+    LayerMask mask;
+    public float distancia = 8; 
+
+
+
     //player
     Transform tr;
     Rigidbody rb;
@@ -40,7 +47,7 @@ public class playercontroller : MonoBehaviour
 
     private Vector2 animSpeed;
 
-
+    private GameObject pickedObject = null;
 
 
 
@@ -54,7 +61,7 @@ public class playercontroller : MonoBehaviour
 
         cam = Camera.main.transform;
 
-
+        mask = LayerMask.GetMask("raycast detect");
     }
 
     // Update is called once per frame
@@ -65,15 +72,51 @@ public class playercontroller : MonoBehaviour
         AnimControl();
 
         ActionsControl();
-        
-     
-        
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distancia, mask))
+        {
+            if (hit.collider.tag == "object")
+            {
+                if (Input.GetKey(KeyCode.E) && pickedObject == null)
+                {
+                    anim.SetBool("Agarrar", true);
+                    pickedObject = gameObject;
+                }
+                if (Input.GetKey(KeyCode.R) && pickedObject != null)
+                {
+                    anim.SetBool("Agarrar", false);
+                    pickedObject = null;
+                }
+            }
+            
+
+            if (hit.collider.tag == "interact")
+            {
+                if (Input.GetKey(KeyCode.E))
+                {
+                  anim.SetBool("eliminar", true);
+                }
+            }
+            
+        }
+        else
+        {
+
+            anim.SetBool("eliminar", false);
+        }
+
     }
+   
     public void ActionsControl()
     {
-        Vector3 floor = transform.TransformDirection(Vector3.down); 
-      
+        Vector3 floor = transform.TransformDirection(Vector3.down);
 
+        
+        if (Input.GetKey(KeyCode.R) && pickedObject != null)
+        {
+            anim.SetBool("Agarrar", false);
+            pickedObject = null;
+        }
         if (Physics.Raycast(transform.position, floor, 0.5f))
         {
             floorDetected = true;
@@ -91,6 +134,7 @@ public class playercontroller : MonoBehaviour
             rb.AddForce(new Vector3(0, JumpForce, 0), ForceMode.Impulse);
 
         }
+        
 
         if (Input.GetKey(KeyCode.LeftShift))
         {

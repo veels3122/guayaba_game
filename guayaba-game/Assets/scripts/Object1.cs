@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Object1 : MonoBehaviour
 {
-
-
+    Animator anim;
+    
     public GameObject Handpoint;
     private GameObject pickedObject = null;
 
-
+    void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
         Soltar();
+        
+
     }
 
     public void Soltar()
@@ -25,7 +30,10 @@ public class Object1 : MonoBehaviour
                 pickedObject.GetComponent<Rigidbody>().useGravity = true;
                 pickedObject.GetComponent<Rigidbody>().isKinematic = false;
                 pickedObject.gameObject.transform.SetParent(null);
-                pickedObject = null;    
+                pickedObject = null;
+                
+                   
+                
             }
         }
     }
@@ -35,6 +43,7 @@ public class Object1 : MonoBehaviour
             {
             if (Input.GetKey(KeyCode.E) && pickedObject==null)
             {
+                
                 other.GetComponent<Rigidbody>().useGravity = false;
                 other.GetComponent <Rigidbody>().isKinematic = true;
 
@@ -43,10 +52,16 @@ public class Object1 : MonoBehaviour
 
                 pickedObject = other.gameObject;
 
+                
+                  
+                
+                
+
             }
         }
 
 
 
     }
+    
 }
