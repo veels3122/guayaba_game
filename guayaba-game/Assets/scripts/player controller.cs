@@ -9,7 +9,7 @@ public class playercontroller : MonoBehaviour
     Transform tr;
     Rigidbody rb;
 
-    public float walkSpeed = 200;
+    public float walkSpeed = 350;
    
     
 
@@ -30,8 +30,8 @@ public class playercontroller : MonoBehaviour
     private float rotY = 0f;
 
     public float RotationSpeed = 200;
-    public float minAngle = -45;
-    public float maxAngle = 45;
+    public float minAngle = -49;
+    public float maxAngle = 30;
     public float cameraSpeed = 200;
 
     //animations
@@ -108,8 +108,8 @@ public class playercontroller : MonoBehaviour
         else
         {
             anim.SetBool("run", false);
-            walkSpeed = 190;
-            cameraSpeed = 200;
+            walkSpeed = 350;
+            cameraSpeed = 350;
 
         }
     }

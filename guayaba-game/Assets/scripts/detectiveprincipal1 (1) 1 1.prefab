@@ -303,7 +303,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6181445198447908186}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 75
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -378,17 +378,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89f9c624f3342d46bb2ba4c57fe0527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 400
-  JumpForce: 6
-  VelRun: 1200
+  walkSpeed: 350
+  JumpForce: 400
+  VelRun: 800
   x: 0
   y: 0
   cameraShoulder: {fileID: 9127955238056626578}
   cameraHolder: {fileID: 6783645158625651046}
   RotationSpeed: 200
-  minAngle: -45
-  maxAngle: 45
-  cameraSpeed: 200
+  minAngle: -49
+  maxAngle: 30
+  cameraSpeed: 350
 --- !u!4 &6810347555570339808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f3216eb1ec150d24e828d51df5f8adf2, type: 3}

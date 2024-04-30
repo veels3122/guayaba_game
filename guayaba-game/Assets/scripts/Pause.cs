@@ -11,6 +11,7 @@ public class Pause : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

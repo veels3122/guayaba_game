@@ -10,6 +10,7 @@ public class selected : MonoBehaviour
 
     public Texture2D puntero;
     public GameObject TextDetect;
+    public GameObject TextDetectFalse;
     GameObject ultimoreconocido = null;
 
 
@@ -19,6 +20,7 @@ public class selected : MonoBehaviour
     {
         mask = LayerMask.GetMask("raycast detect");
         TextDetect.SetActive(false);
+        TextDetectFalse.SetActive(false);
 
     }
 
