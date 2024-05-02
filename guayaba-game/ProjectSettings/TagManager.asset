@@ -9,6 +9,8 @@ TagManager:
   - object
   - interact
   - no_guayaba
+  - Door
+  - TriggerDoor
   layers:
   - Default
   - TransparentFX

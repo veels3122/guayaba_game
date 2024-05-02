@@ -41,7 +41,13 @@ public class selected : MonoBehaviour
                 
 
             }
-
+            if(hit.collider.tag == "Door")
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    hit.collider.transform.GetComponent<ScriptDoor>().ChangeDoorState();
+                }
+            }
             if (hit.collider.tag == "interact")
             {
              SelectedObjectNT(hit.transform);
@@ -55,7 +61,7 @@ public class selected : MonoBehaviour
                 }
             }
 
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distancia, Color.red);
+           
         }
         else
         {
@@ -80,7 +86,7 @@ public class selected : MonoBehaviour
     {
         if (ultimoreconocido)
         {
-            ultimoreconocido.GetComponent<Renderer>().material.color = Color.white;
+            ultimoreconocido.GetComponent<Renderer>().material.color = Color.clear;
             ultimoreconocido = null;
         }
     }

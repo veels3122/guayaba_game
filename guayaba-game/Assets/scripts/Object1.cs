@@ -29,6 +29,8 @@ public class Object1 : MonoBehaviour
             {
                 pickedObject.GetComponent<Rigidbody>().useGravity = true;
                 pickedObject.GetComponent<Rigidbody>().isKinematic = false;
+                pickedObject.GetComponent<Rigidbody>().freezeRotation = false;
+                pickedObject.GetComponent<Rigidbody>().position = Vector3.zero;
                 pickedObject.gameObject.transform.SetParent(null);
                 pickedObject = null;
                 
