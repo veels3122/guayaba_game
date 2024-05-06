@@ -43,7 +43,7 @@ public class playercontroller : MonoBehaviour
 
     //animations
 
-    Animator anim;
+    public Animator anim;
 
     private Vector2 animSpeed;
 

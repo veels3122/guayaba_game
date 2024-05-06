@@ -11,6 +11,10 @@ TagManager:
   - no_guayaba
   - Door
   - TriggerDoor
+  - Table
+  - guayaba_infect
+  - recolector
+  - Enemigo1
   layers:
   - Default
   - TransparentFX

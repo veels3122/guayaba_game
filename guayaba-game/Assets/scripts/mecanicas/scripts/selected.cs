@@ -3,17 +3,28 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.UIElements;
 
 public class selected : MonoBehaviour
+
 {
     LayerMask mask;
+
     public float distancia = 8;
 
     public Texture2D puntero;
     public GameObject TextDetect;
     GameObject ultimoreconocido = null;
-
+    public TextMeshProUGUI TextMision;
     Animator anim;
+    //first mision
+    public int NumObjetivos;
+    public GameObject Panel_Guayaba_infect;
+    public GameObject Panel_selected;
+    public GameObject panel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +32,12 @@ public class selected : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         mask = LayerMask.GetMask("raycast detect");
         TextDetect.SetActive(false);
-        
+        //first mision
+        NumObjetivos = GameObject.FindGameObjectsWithTag("Table").Length;
+        TextMision.text = "encuentra las tablas que estan flojas" +
+            "\n restantes: " + NumObjetivos;
+
+
     }
 
     // Update is called once per frame
@@ -33,6 +49,14 @@ public class selected : MonoBehaviour
         {
             //aqui se agregan los tipos de colores que se quieran que tengan lso objetos con sus tag
             Deselected();
+           if(hit.collider.tag == "guayaba_infect")
+            {
+               
+                SelectGuayaba_I(hit.transform);
+               
+
+            }
+            
             if (hit.collider.tag == "object")
             {
                
@@ -43,11 +67,29 @@ public class selected : MonoBehaviour
             }
             if(hit.collider.tag == "Door")
             {
+                
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    
                     hit.collider.transform.GetComponent<ScriptDoor>().ChangeDoorState();
                 }
             }
+            if (hit.collider.tag == "Table")
+            {
+                SelectedObjectNT(hit.transform);
+                
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+
+                    hit.collider.transform.GetComponent<ObjectInt>().ActivateObject();
+                    NumObjetivos--;
+                    TextMision.text = "encuentra las tablas que estan flojas" +
+            "\n restantes: " + NumObjetivos;
+                    
+
+                }
+            }
+            
             if (hit.collider.tag == "interact")
             {
              SelectedObjectNT(hit.transform);
@@ -67,16 +109,40 @@ public class selected : MonoBehaviour
         {
             Deselected();
         }
+        if (NumObjetivos <= 1)
+        {
+            TextMision.text = "bien hecho ahora presiona ´T´ para la siguiente mision";
+            if (Input.GetKeyDown(KeyCode.T))
+            {
 
+
+
+                TextMision.text = "busca al granjero";
+                
+                NumObjetivos = 2;
+            }
+        }
 
     }
+    //first mision
+    
+
+    private void SelectGuayaba_I(Transform transform)
+    {
+        Panel_Guayaba_infect.SetActive(true);
+        transform.GetComponent<MeshRenderer>().material.color = Color.red;
+        ultimoreconocido = transform.gameObject;
+    }
+    
     private void SelectedObjectNT(Transform transform)
     {
+        Panel_selected.SetActive(true);
         transform.GetComponent<MeshRenderer>().material.color = Color.red;
         ultimoreconocido = transform.gameObject;
     }
     private void SelectedObject(Transform transform) 
     {
+        Panel_selected.SetActive(true);
         transform.GetComponent<MeshRenderer>().material.color = Color.green;
         ultimoreconocido = transform.gameObject;
 
@@ -88,6 +154,7 @@ public class selected : MonoBehaviour
         {
             ultimoreconocido.GetComponent<Renderer>().material.color = Color.clear;
             ultimoreconocido = null;
+            Panel_Guayaba_infect.SetActive(false);
         }
     }
     private void OnGUI()
@@ -102,6 +169,7 @@ public class selected : MonoBehaviour
         else
         {
             TextDetect.SetActive(false);
+           
         }
 
     }

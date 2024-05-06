@@ -8,6 +8,7 @@ public class Pause : MonoBehaviour
 {
     public GameObject ObjetoMenuPausa;
     public bool Pausa = false;
+    public bool IsPaused = false;
     void Start()
     {
         Time.timeScale = 1;
@@ -17,6 +18,21 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(IsPaused == true)
+        {
+            if (Pausa == false)
+            {
+                ObjetoMenuPausa.SetActive(true);
+                Pausa = true;
+                Time.timeScale = 0;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else if (Pausa)
+            {
+                Resumir();
+            }
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Pausa == false)

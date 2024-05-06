@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Object1 : MonoBehaviour
@@ -41,6 +42,27 @@ public class Object1 : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        if (other.gameObject.CompareTag("guayaba_infect"))
+            {
+            if (Input.GetKey(KeyCode.E) && pickedObject == null)
+            {
+
+                other.GetComponent<Rigidbody>().useGravity = false;
+                other.GetComponent<Rigidbody>().isKinematic = true;
+
+                other.transform.position = Handpoint.transform.position;
+                other.gameObject.transform.SetParent(Handpoint.gameObject.transform);
+
+                pickedObject = other.gameObject;
+
+
+
+
+
+
+            }
+
+        }
         if (other.gameObject.CompareTag("object"))
             {
             if (Input.GetKey(KeyCode.E) && pickedObject==null)
