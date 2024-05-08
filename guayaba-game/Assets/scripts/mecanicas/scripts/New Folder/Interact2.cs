@@ -11,6 +11,7 @@ public class Interact2 : MonoBehaviour
     public Texture2D puntero;
     public GameObject TextDetectFalse;
     GameObject ultimoreconocido = null;
+    public GameObject Panel_Guayaba_nomadurada;
 
 
 
@@ -33,7 +34,7 @@ public class Interact2 : MonoBehaviour
             Deselected();
             if (hit.collider.tag == "no_guayaba")
             {
-
+                Panel_Guayaba_nomadurada.SetActive(true);
                 SelectedObjectNG(hit.transform);
                 OnGUI();
             }
@@ -59,7 +60,8 @@ public class Interact2 : MonoBehaviour
         {
             ultimoreconocido.GetComponent<Renderer>().material.color = Color.white;
             ultimoreconocido = null;
-        }
+            Panel_Guayaba_nomadurada.SetActive(false);
+}
     }
     
     private void OnGUI()

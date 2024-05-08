@@ -177,6 +177,11 @@ MonoBehaviour:
   distancia: 8
   puntero: {fileID: 2800000, guid: 98fa69bd52405464385205f677ce1baf, type: 3}
   TextDetect: {fileID: 0}
+  TextMision: {fileID: 0}
+  NumObjetivos: 0
+  Panel_Guayaba_infect: {fileID: 0}
+  Panel_selected: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!114 &6959957129508138260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +197,7 @@ MonoBehaviour:
   distancia: 8
   puntero: {fileID: 2800000, guid: 98fa69bd52405464385205f677ce1baf, type: 3}
   TextDetectFalse: {fileID: 0}
+  Panel_Guayaba_nomadurada: {fileID: 0}
 --- !u!1 &8610524271999670637
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,6 +412,7 @@ MonoBehaviour:
   minAngle: -49
   maxAngle: 30
   cameraSpeed: 350
+  anim: {fileID: 8499738418753030529}
 --- !u!4 &6810347555570339808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f3216eb1ec150d24e828d51df5f8adf2, type: 3}

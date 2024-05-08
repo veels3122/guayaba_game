@@ -14,6 +14,7 @@ public class secondmision : MonoBehaviour
     public GameObject Panel_Interacion;
     public GameObject PanelDialog;
     public GameObject PanelMision2;
+
     public TextMeshProUGUI TextMision2;
     public bool JugadorCerca;
     public bool aceptarmision;

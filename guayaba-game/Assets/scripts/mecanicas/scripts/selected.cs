@@ -22,6 +22,7 @@ public class selected : MonoBehaviour
     //first mision
     public int NumObjetivos;
     public GameObject Panel_Guayaba_infect;
+    
     public GameObject Panel_selected;
     public GameObject panel;
 
@@ -32,10 +33,8 @@ public class selected : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         mask = LayerMask.GetMask("raycast detect");
         TextDetect.SetActive(false);
-        //first mision
-        NumObjetivos = GameObject.FindGameObjectsWithTag("Table").Length;
-        TextMision.text = "encuentra las tablas que estan flojas" +
-            "\n restantes: " + NumObjetivos;
+        
+        
 
 
     }
@@ -82,9 +81,7 @@ public class selected : MonoBehaviour
                 {
 
                     hit.collider.transform.GetComponent<ObjectInt>().ActivateObject();
-                    NumObjetivos--;
-                    TextMision.text = "encuentra las tablas que estan flojas" +
-            "\n restantes: " + NumObjetivos;
+                    
                     
 
                 }
@@ -109,19 +106,7 @@ public class selected : MonoBehaviour
         {
             Deselected();
         }
-        if (NumObjetivos <= 1)
-        {
-            TextMision.text = "bien hecho ahora presiona ´T´ para la siguiente mision";
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-
-
-
-                TextMision.text = "busca al granjero";
-                
-                NumObjetivos = 2;
-            }
-        }
+        
 
     }
     //first mision
