@@ -15,6 +15,10 @@ TagManager:
   - guayaba_infect
   - recolector
   - Enemigo1
+  - npc
+  - DoorOfice
+  - DoorOfice1
+  - key
   layers:
   - Default
   - TransparentFX

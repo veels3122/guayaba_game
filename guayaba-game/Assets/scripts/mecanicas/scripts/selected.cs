@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.UIElements;
+using System.Runtime.Serialization.Formatters;
 
 public class selected : MonoBehaviour
 
@@ -17,10 +18,7 @@ public class selected : MonoBehaviour
     public Texture2D puntero;
     public GameObject TextDetect;
     GameObject ultimoreconocido = null;
-    public TextMeshProUGUI TextMision;
     Animator anim;
-    //first mision
-    public int NumObjetivos;
     public GameObject Panel_Guayaba_infect;
     
     public GameObject Panel_selected;
@@ -55,7 +53,30 @@ public class selected : MonoBehaviour
                
 
             }
-            
+            if(hit.collider.tag == "key")
+            {
+
+
+                SelectedObject(hit.transform);
+                
+
+                if (hit.collider.tag == "DoorOfice")
+                {
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+
+                        hit.collider.transform.GetComponent<ScriptDoor2>().ChangeDoorState();
+                    }
+                }
+                if (hit.collider.tag == "DoorOfice1")
+                {
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        hit.collider.transform.GetComponent<ScriptDoorOfice>().ChangeDoorState();
+                    }
+                }
+
+            }
             if (hit.collider.tag == "object")
             {
                
@@ -64,7 +85,7 @@ public class selected : MonoBehaviour
                 
 
             }
-            if(hit.collider.tag == "Door")
+            if (hit.collider.tag == "Door")
             {
                 
                 if (Input.GetKeyDown(KeyCode.E))
@@ -127,7 +148,7 @@ public class selected : MonoBehaviour
     }
     private void SelectedObject(Transform transform) 
     {
-        Panel_selected.SetActive(true);
+        
         transform.GetComponent<MeshRenderer>().material.color = Color.green;
         ultimoreconocido = transform.gameObject;
 

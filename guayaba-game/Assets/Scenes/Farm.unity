@@ -22439,6 +22439,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuertaOldHouse
       objectReference: {fileID: 0}
+    - target: {fileID: 1680193187311449225, guid: 892894fe27b2f654997d9e5608e859a0, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838163422711458503, guid: 892894fe27b2f654997d9e5608e859a0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907358396040410181, guid: 892894fe27b2f654997d9e5608e859a0, type: 3}
+      propertyPath: OpenDoor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907358396040410181, guid: 892894fe27b2f654997d9e5608e859a0, type: 3}
+      propertyPath: DoorOpenAngle
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 2828966556687089367, guid: 892894fe27b2f654997d9e5608e859a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 221
@@ -22478,6 +22494,14 @@ PrefabInstance:
     - target: {fileID: 2828966556687089367, guid: 892894fe27b2f654997d9e5608e859a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -88.798
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243749795062274412, guid: 892894fe27b2f654997d9e5608e859a0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523087679940381287, guid: 892894fe27b2f654997d9e5608e859a0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

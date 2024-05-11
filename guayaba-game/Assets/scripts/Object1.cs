@@ -83,7 +83,26 @@ public class Object1 : MonoBehaviour
 
             }
         }
+        if (other.gameObject.CompareTag("key"))
+        {
+            if (Input.GetKey(KeyCode.E) && pickedObject == null)
+            {
 
+                other.GetComponent<Rigidbody>().useGravity = false;
+                other.GetComponent<Rigidbody>().isKinematic = true;
+
+                other.transform.position = Handpoint.transform.position;
+                other.gameObject.transform.SetParent(Handpoint.gameObject.transform);
+
+                pickedObject = other.gameObject;
+
+
+
+
+
+
+            }
+        }
 
 
     }

@@ -88,7 +88,20 @@ public class playercontroller : MonoBehaviour
                     pickedObject = null;
                 }
             }
-            
+            if (hit.collider.tag == "key")
+            {
+                if (Input.GetKey(KeyCode.E) && pickedObject == null)
+                {
+                    anim.SetBool("Agarrar", true);
+                    pickedObject = gameObject;
+                }
+                if (Input.GetKey(KeyCode.R) && pickedObject != null)
+                {
+                    anim.SetBool("Agarrar", false);
+                    pickedObject = null;
+                }
+            }
+
 
             if (hit.collider.tag == "interact")
             {
