@@ -6,9 +6,14 @@ using UnityEngine;
 public class Object1 : MonoBehaviour
 {
     Animator anim;
-    
+
+    public GameObject DoorRFalse;
+    public GameObject DoorR;
+    public GameObject DoorLFalse;
+    public GameObject DoorL;
     public GameObject Handpoint;
     private GameObject pickedObject = null;
+    public ScriptDoorOfice prueba;
 
     void Start()
     {
@@ -95,7 +100,10 @@ public class Object1 : MonoBehaviour
                 other.gameObject.transform.SetParent(Handpoint.gameObject.transform);
 
                 pickedObject = other.gameObject;
-
+                DoorRFalse.SetActive(false);
+                DoorR.SetActive(true);
+                DoorLFalse.SetActive(false);
+                DoorL.SetActive(true);
 
 
 

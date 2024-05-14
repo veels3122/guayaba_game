@@ -60,22 +60,23 @@ public class selected : MonoBehaviour
                 SelectedObject(hit.transform);
                 
 
-                if (hit.collider.tag == "DoorOfice")
-                {
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
 
-                        hit.collider.transform.GetComponent<ScriptDoor2>().ChangeDoorState();
-                    }
-                }
-                if (hit.collider.tag == "DoorOfice1")
-                {
-                    if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        hit.collider.transform.GetComponent<ScriptDoorOfice>().ChangeDoorState();
-                    }
-                }
+            }
 
+            if (hit.collider.tag == "DoorOfice")
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+
+                    hit.collider.transform.GetComponent<ScriptDoor2>().ChangeDoorState();
+                }
+            }
+            if (hit.collider.tag == "DoorOfice1")
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    hit.collider.transform.GetComponent<ScriptDoorOfice>().ChangeDoorState();
+                }
             }
             if (hit.collider.tag == "object")
             {

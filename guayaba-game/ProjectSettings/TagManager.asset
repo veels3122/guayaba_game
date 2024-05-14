@@ -19,6 +19,7 @@ TagManager:
   - DoorOfice
   - DoorOfice1
   - key
+  - test
   layers:
   - Default
   - TransparentFX
