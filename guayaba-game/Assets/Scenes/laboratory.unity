@@ -49070,6 +49070,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e29007a61bb10460ab62349273829631, type: 2}
+    - target: {fileID: 6850087490173077939, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8349294973750491670, guid: e6084503f826bbb428b1e677dc1a75d4, type: 3}
       propertyPath: m_Name
       value: Lab
