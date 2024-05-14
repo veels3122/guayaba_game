@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 3331951404974817673}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3127451, y: -0.30999994, z: 4.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.31578, y: -0.30999994, z: 4.8}
+  m_LocalScale: {x: 0.35403, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8803277479785894653}
@@ -54,8 +54,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.77246356, y: 0.877833, z: 4.3052235}
+  m_Center: {x: 0.0047085322, y: -0.025161818, z: -1.6526086}
 --- !u!114 &52646235139122507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9127955238056626578}
   - component: {fileID: 3393073587129728467}
+  - component: {fileID: 6959957129508138260}
   m_Layer: 0
   m_Name: cameraShoulder (1)
   m_TagString: Untagged
@@ -153,7 +154,7 @@ Transform:
   m_GameObject: {fileID: 8435539374034984636}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07274532, y: 3.66, z: 0.119188905}
+  m_LocalPosition: {x: -0.07274532, y: 3.85, z: 0.119188905}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -173,9 +174,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687274f0ee814c44e9c105e4ba3fb55e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distancia: 6
+  distancia: 8
   puntero: {fileID: 2800000, guid: 98fa69bd52405464385205f677ce1baf, type: 3}
   TextDetect: {fileID: 0}
+  TextMision: {fileID: 0}
+  NumObjetivos: 0
+  Panel_Guayaba_infect: {fileID: 0}
+  Panel_selected: {fileID: 0}
+  panel: {fileID: 0}
+--- !u!114 &6959957129508138260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8435539374034984636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22dfcf3e6531d8a49a602a3bbac3d6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distancia: 8
+  puntero: {fileID: 2800000, guid: 98fa69bd52405464385205f677ce1baf, type: 3}
+  TextDetectFalse: {fileID: 0}
+  Panel_Guayaba_nomadurada: {fileID: 0}
 --- !u!1 &8610524271999670637
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c89f9c624f3342d46bb2ba4c57fe0527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distancia: 8
   walkSpeed: 350
   JumpForce: 400
   VelRun: 800
@@ -386,9 +409,10 @@ MonoBehaviour:
   cameraShoulder: {fileID: 9127955238056626578}
   cameraHolder: {fileID: 6783645158625651046}
   RotationSpeed: 200
-  minAngle: -50
+  minAngle: -49
   maxAngle: 30
   cameraSpeed: 350
+  anim: {fileID: 8499738418753030529}
 --- !u!4 &6810347555570339808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f3216eb1ec150d24e828d51df5f8adf2, type: 3}
