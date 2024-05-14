@@ -20,6 +20,13 @@ TagManager:
   - DoorOfice1
   - key
   - test
+  - pruebas
+  - examinar
+  - examinarcilindro
+  - examinarguayabagrande
+  - examinarguayaba
+  - examinarguayaba2
+  - examinarcajas
   layers:
   - Default
   - TransparentFX

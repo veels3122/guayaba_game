@@ -70,7 +70,7 @@ public class secondmision : MonoBehaviour
                            "\n Restantes: " + NumDeObjetivos;
         if (NumDeObjetivos <= 0)
         {
-            TextMision2.text = "bien hecho ahora al laboratorio \n presiona ESC para moverte a el";
+            TextMision2.text = "bien hecho ahora a la tienda para buscar mas pruebas \n presiona ESC para moverte a ella";
             if (NumDeObjetivos <= 0 && Input.GetKeyDown(KeyCode.T))
             {
                 PanelMision2.SetActive(false);

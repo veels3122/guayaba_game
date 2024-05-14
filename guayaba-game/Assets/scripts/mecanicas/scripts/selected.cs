@@ -71,6 +71,14 @@ public class selected : MonoBehaviour
                     hit.collider.transform.GetComponent<ScriptDoor2>().ChangeDoorState();
                 }
             }
+            if (hit.collider.tag == "doorstore")
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+
+                    hit.collider.transform.GetComponent<scriptdoorstore>().ChangeDoorState();
+                }
+            }
             if (hit.collider.tag == "DoorOfice1")
             {
                 if (Input.GetKeyDown(KeyCode.E))
@@ -121,8 +129,20 @@ public class selected : MonoBehaviour
 
                 }
             }
+            if (hit.collider.tag == "pruebas")
+            {
+                SelectedObjectNT(hit.transform);
 
-           
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+
+                    hit.collider.transform.GetComponent<ObjectInt>().ActivateObject();
+
+
+                }
+            }
+
+
         }
         else
         {
@@ -162,6 +182,7 @@ public class selected : MonoBehaviour
             ultimoreconocido.GetComponent<Renderer>().material.color = Color.clear;
             ultimoreconocido = null;
             Panel_Guayaba_infect.SetActive(false);
+            Panel_selected.SetActive(false);
         }
     }
     private void OnGUI()
