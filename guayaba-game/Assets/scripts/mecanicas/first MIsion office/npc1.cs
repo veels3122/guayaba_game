@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class npc1 : MonoBehaviour
 {
     public MostrarTiempo mostrarTiempo;
-    public float TimmerOffice;
+   // public float TimmerOffice;
     private Score score;
     public Text puntajeMisionText;
 
@@ -184,7 +184,7 @@ public class npc1 : MonoBehaviour
             float tiempoGlobal = mostrarTiempo.ObtenerTiempoTotalGlobal();
 
             // Calcular el puntaje para esta misión usando el tiempo global
-            float puntajeMision = score.CalcularPuntaje(tiempoGlobal);
+            float puntajeMision = score.CalcularPuntaje(tiempoActual);
 
             // Agregar el puntaje de esta misión al puntaje total
             score.AgregarPuntaje(puntajeMision);
