@@ -4,9 +4,19 @@ using System.Runtime.ConstrainedExecution;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class npc1 : MonoBehaviour
 {
+    public MostrarTiempo mostrarTiempo;
+    public float TimmerOffice;
+    private Score score;
+    public Text puntajeMisionText;
+
+
+
+
+
     public int NumNpc;
 
 
@@ -32,7 +42,10 @@ public class npc1 : MonoBehaviour
     public bool Finalmap;
     // Start is called before the first frame update
     void Start()
-    {
+    {   //Variable para implementar el Score
+        score = new Score();
+        ////////////////////////////////////
+
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<playercontroller>();
         if (final1 == false)
         {
@@ -160,7 +173,29 @@ public class npc1 : MonoBehaviour
         }
         if(Finalmap == true)
         {
-            textmission2.text = "bien hecho con esta informacion nos dirigimos a la granja \n presiona 'ESC' y luego dirigete a la granja";
+           
+            // Pausa el contador del tiempo
+            mostrarTiempo.PausarTiempo(true);
+
+            // Obtener el tiempo transcurrido en segundos
+            float tiempoActual = mostrarTiempo.ObtenerTiempoActual();
+
+            // Obtener el tiempo total global desde MostrarTiempo
+            float tiempoGlobal = mostrarTiempo.ObtenerTiempoTotalGlobal();
+
+            // Calcular el puntaje para esta misión usando el tiempo global
+            float puntajeMision = score.CalcularPuntaje(tiempoGlobal);
+
+            // Agregar el puntaje de esta misión al puntaje total
+            score.AgregarPuntaje(puntajeMision);
+
+            // Mostrar el tiempo actual en el registro
+            int minutos = Mathf.FloorToInt(tiempoActual / 60);
+            int segundos = Mathf.FloorToInt(tiempoActual % 60);
+            Debug.Log("Timer: " + minutos.ToString("00") + ":" + segundos.ToString("00"));
+            puntajeMisionText.text = "Puntaje: " + ((int)puntajeMision);
+            // Mostrar mensaje de misión completada
+            textmission2.text = "Bien hecho con esta informacion nos dirigimos a la granja \n presiona 'ESC' y luego dirigete a la granja";
         }
 
          
