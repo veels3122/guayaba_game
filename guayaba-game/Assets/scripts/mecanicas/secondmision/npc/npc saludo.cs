@@ -100,6 +100,7 @@ public class npcsaludo : MonoBehaviour
                 panel1.SetActive(false);
                 panel2.SetActive(false);
                 panelinteraccion.SetActive(false);
+                jugadorcerca1 = false;
             }
         }
     }

@@ -54,8 +54,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.77246356, y: 0.877833, z: 4.3052235}
-  m_Center: {x: 0.0047085322, y: -0.025161818, z: -1.6526086}
+  m_Size: {x: 1.7851592, y: 1.7786179, z: 5.8299503}
+  m_Center: {x: -0.34208736, y: 0.42522317, z: -0.89024097}
 --- !u!114 &52646235139122507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1509fe1a189168a449a7d53318174dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DoorRFalse: {fileID: 0}
+  DoorR: {fileID: 0}
+  DoorLFalse: {fileID: 0}
+  DoorL: {fileID: 0}
   Handpoint: {fileID: 8610524271999670637}
+  prueba: {fileID: 0}
+  interaccion: {fileID: 0}
+  soltar: {fileID: 0}
 --- !u!54 &576488243035805295
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -177,8 +184,6 @@ MonoBehaviour:
   distancia: 8
   puntero: {fileID: 2800000, guid: 98fa69bd52405464385205f677ce1baf, type: 3}
   TextDetect: {fileID: 0}
-  TextMision: {fileID: 0}
-  NumObjetivos: 0
   Panel_Guayaba_infect: {fileID: 0}
   Panel_selected: {fileID: 0}
   panel: {fileID: 0}
@@ -223,7 +228,7 @@ Transform:
   m_GameObject: {fileID: 8610524271999670637}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 0.35, z: -2.815}
+  m_LocalPosition: {x: 2.89, y: 0.36, z: -2.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -279,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f3216eb1ec150d24e828d51df5f8adf2, type: 3}
       propertyPath: m_Name
-      value: detectiveprincipal1 (1) 1 1
+      value: detective
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: f3216eb1ec150d24e828d51df5f8adf2, type: 3}
       propertyPath: m_Avatar

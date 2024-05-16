@@ -18,7 +18,7 @@ public class selected : MonoBehaviour
     public Texture2D puntero;
     public GameObject TextDetect;
     GameObject ultimoreconocido = null;
-    Animator anim;
+    
     public GameObject Panel_Guayaba_infect;
     
     public GameObject Panel_selected;
@@ -28,9 +28,7 @@ public class selected : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
         mask = LayerMask.GetMask("raycast detect");
-        TextDetect.SetActive(false);
         
         
 
@@ -53,8 +51,9 @@ public class selected : MonoBehaviour
                
 
             }
-             
            
+
+
 
             if (hit.collider.tag == "DoorOfice")
             {
@@ -83,7 +82,6 @@ public class selected : MonoBehaviour
             {
                
                 SelectedObject(hit.transform);
-                OnGUI();
                 
 
             }
@@ -92,7 +90,8 @@ public class selected : MonoBehaviour
                 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    
+
+                    SelectedObject(hit.transform);
                     hit.collider.transform.GetComponent<ScriptDoor>().ChangeDoorState();
                 }
             }
@@ -172,7 +171,7 @@ public class selected : MonoBehaviour
     {
         if (ultimoreconocido)
         {
-            ultimoreconocido.GetComponent<Renderer>().material.color = Color.clear;
+            ultimoreconocido.GetComponent<Renderer>().material.color = Color.white;
             ultimoreconocido = null;
             Panel_Guayaba_infect.SetActive(false); 
             Panel_selected.SetActive(false);

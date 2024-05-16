@@ -44,10 +44,10 @@ public class npcperros : MonoBehaviour
             jugador.anim.SetFloat("X", 0);
             jugador.anim.SetFloat("Y", 0);
             jugador.enabled = false;
-            panelinteraccion.SetActive(false);
+            panelinteraccion.SetActive(false); 
             panel1.SetActive(true);
             panel2.SetActive(true);
-            texto1.text = "buen dia, que necesita?";
+            texto1.text = "buen dia, le puedo ayudar en algo?";
             texto2.text = "presiona 'Y'- perdone sabe usted algo sobre las gauyabas infectadas en el mercado?" + 
                 "\n presiona 'X'- no que pena me equivoque";
         }
@@ -100,6 +100,7 @@ public class npcperros : MonoBehaviour
                 panel1.SetActive(false);
                 panel2.SetActive(false);
                 panelinteraccion.SetActive(false);
+                jugadorcerca1 = false;
             }
         }
     }

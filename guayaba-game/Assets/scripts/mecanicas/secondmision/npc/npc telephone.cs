@@ -98,6 +98,7 @@ public class npctelephone : MonoBehaviour
         {
             if (other.tag == "Player")
             {
+                jugadorcerca1 = false;
                 panel1.SetActive(false);
                 panel2.SetActive(false);
                 panelinteraccion.SetActive(false);

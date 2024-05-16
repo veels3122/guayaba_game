@@ -44,7 +44,7 @@ public class npcmaquibna : MonoBehaviour
             jugador.anim.SetFloat("X", 0);
             jugador.anim.SetFloat("Y", 0);
             jugador.enabled = false;
-            panelinteraccion.SetActive(false);
+            panelinteraccion.SetActive(false); 
             panel1.SetActive(true);
             panel2.SetActive(true);
             texto1.text = "que pasa?";
@@ -100,6 +100,7 @@ public class npcmaquibna : MonoBehaviour
                 panel1.SetActive(false);
                 panel2.SetActive(false);
                 panelinteraccion.SetActive(false);
+                jugadorcerca1 = false;
             }
         }
     }

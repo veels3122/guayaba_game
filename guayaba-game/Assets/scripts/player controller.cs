@@ -7,8 +7,7 @@ using UnityEngine;
 public class playercontroller : MonoBehaviour
 {
     //probe mano
-    LayerMask mask;
-    public float distancia = 8; 
+    
 
 
 
@@ -61,7 +60,6 @@ public class playercontroller : MonoBehaviour
 
         cam = Camera.main.transform;
 
-        mask = LayerMask.GetMask("raycast detect");
     }
 
     // Update is called once per frame
@@ -72,51 +70,8 @@ public class playercontroller : MonoBehaviour
         AnimControl();
 
         ActionsControl();
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distancia, mask))
-        {
-            if (hit.collider.tag == "object")
-            {
-                if (Input.GetKey(KeyCode.E) && pickedObject == null)
-                {
-                    anim.SetBool("Agarrar", true);
-                    pickedObject = gameObject;
-                }
-                if (Input.GetKey(KeyCode.R) && pickedObject != null)
-                {
-                    anim.SetBool("Agarrar", false);
-                    pickedObject = null;
-                }
-            }
-            if (hit.collider.tag == "key")
-            {
-                if (Input.GetKey(KeyCode.E) && pickedObject == null)
-                {
-                    anim.SetBool("Agarrar", true);
-                    pickedObject = gameObject;
-                }
-                if (Input.GetKey(KeyCode.R) && pickedObject != null)
-                {
-                    anim.SetBool("Agarrar", false);
-                    pickedObject = null;
-                }
-            }
-
-
-            if (hit.collider.tag == "interact")
-            {
-                if (Input.GetKey(KeyCode.E))
-                {
-                  anim.SetBool("eliminar", true);
-                }
-            }
-            
-        }
-        else
-        {
-
-            anim.SetBool("eliminar", false);
-        }
+        
+        
 
     }
    
