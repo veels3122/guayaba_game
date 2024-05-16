@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class fourmission : MonoBehaviour
 {
+    public MostrarTiempo mostrarTiempo;
+    private Score score;
+    public Text puntajeMisionText;
+
+
     public int contador;
     public GameObject panelmission;
     public TextMeshProUGUI textomission;
@@ -21,8 +27,12 @@ public class fourmission : MonoBehaviour
 
     void Start()
     {
+        //Variable para implementar el Score
+        score = new Score();
+        ////////////////////////////////////
+        ///
         contador = GameObject.FindGameObjectsWithTag("examinarcilindro").Length + GameObject.FindGameObjectsWithTag("examinarguayabagrande").Length + GameObject.FindGameObjectsWithTag("examinarguayaba").Length + GameObject.FindGameObjectsWithTag("examinarguayaba2").Length + GameObject.FindGameObjectsWithTag("examinarcajas").Length;
-       textomission.text = "examina todos lo recolectado en el laboratorio \n restantes: "+ contador;
+       textomission.text = "Examina todos lo recolectado en el laboratorio \n restantes: "+ contador;
         anim = GetComponentInChildren<Animator>();
         panelinteraccion2.SetActive(false);
         mision = false;
@@ -50,8 +60,24 @@ public class fourmission : MonoBehaviour
 
         }
         if(contador == 0)
-        {
-         
+        { // Pausa el contador del tiempo
+            mostrarTiempo.PausarTiempo(true);
+            // Obtener el tiempo transcurrido en segundos
+            float tiempoActual = mostrarTiempo.ObtenerTiempoActual();
+            // Obtener el tiempo total global desde MostrarTiempo
+            float tiempoGlobal = mostrarTiempo.ObtenerTiempoTotalGlobal();
+            // Calcular el puntaje para esta misión usando el tiempo global
+            float puntajeMision = score.CalcularPuntaje(tiempoActual);
+            // Agregar el puntaje de esta misión al puntaje total
+            score.AgregarPuntaje(puntajeMision);
+            // Mostrar el tiempo actual en el registro
+            int minutos = Mathf.FloorToInt(tiempoActual / 60);
+            int segundos = Mathf.FloorToInt(tiempoActual % 60);
+            Debug.Log("Timer: " + minutos.ToString("00") + ":" + segundos.ToString("00"));
+            puntajeMisionText.text = "Puntaje: " + ((int)puntajeMision);
+            // Mostrar mensaje de misión completada
+
+
             textomission.text = "perfecto, con esto ya tenemos para detener esta placa, \n muchas gracias por tu ayuda, \n hasta el proximo caso";
             
             if (Input.GetKeyDown(KeyCode.E))
@@ -98,7 +124,7 @@ public class fourmission : MonoBehaviour
 
                 pickedObject = other.gameObject;
                 panel1.SetActive(true);
-                texto1.text = "este contenedor tiene sustancias de agrandamiento de guayabas de forma ilicita, tiene sustancias bastante peligrosas";
+                texto1.text = "Este contenedor tiene sustancias de agrandamiento de guayabas de forma ilicita, tiene sustancias bastante peligrosas";
                 panelinteraccion2.SetActive(true);
             }
 
@@ -118,7 +144,7 @@ public class fourmission : MonoBehaviour
 
                 pickedObject = other.gameObject;
                 panel1.SetActive(true);
-                texto1.text = "esta guayaba se nota que fue alterada por sustancias, fue alterada desde su nacimiento por lo que veo";
+                texto1.text = "Esta guayaba se nota que fue alterada por sustancias, fue alterada desde su nacimiento por lo que veo";
                 panelinteraccion2.SetActive(true);
             }
 
@@ -138,7 +164,7 @@ public class fourmission : MonoBehaviour
 
                 pickedObject = other.gameObject;
                 panel1.SetActive(true);
-                texto1.text = "uy, esta guayaba tiene gusanos por dentro, toca tener mas cuidado con estas sirven de prueba para demostrar el virus que existe hoy dia en las guayabas";
+                texto1.text = "¡Uy!, esta guayaba tiene gusanos por dentro, toca tener mas cuidado con estas sirven de prueba para demostrar el virus que existe hoy dia en las guayabas";
                 panelinteraccion2.SetActive(true);
             }
 
@@ -158,7 +184,7 @@ public class fourmission : MonoBehaviour
 
                 pickedObject = other.gameObject;
                 panel1.SetActive(true);
-                texto1.text = "esta guayaba esta bastante podrida, como si el experimento les hubiera salido mal, esta contiene como una sustancia desidratante, y que la pudre al poco tiempo";
+                texto1.text = "Esta guayaba esta bastante podrida, como si el experimento les hubiera salido mal, esta contiene como una sustancia desidratante, y que la pudre al poco tiempo";
                 panelinteraccion2.SetActive(true);
             }
 
@@ -178,15 +204,11 @@ public class fourmission : MonoBehaviour
 
                 pickedObject = other.gameObject;
                 panel1.SetActive(true);
-                texto1.text = "estas cajas, contienen las sustancias que contaminan a las guayabas, y son las que estan pudriendo al resto de competencia";
+                texto1.text = "Estas cajas, contienen las sustancias que contaminan a las guayabas, y son las que estan pudriendo al resto de competencia";
                 panelinteraccion2.SetActive(true);
             }
 
         }
-
-
-
-
 
 
     }
@@ -213,14 +235,10 @@ public class fourmission : MonoBehaviour
         if (other.gameObject.CompareTag("examinarguayaba2"))
         {
             panelinteraccion.SetActive(false);
-
-
         }
         if (other.gameObject.CompareTag("examinarcajas"))
         {
             panelinteraccion.SetActive(false);
-
-
         }
     }
 
