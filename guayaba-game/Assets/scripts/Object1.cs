@@ -14,10 +14,12 @@ public class Object1 : MonoBehaviour
     public GameObject Handpoint;
     private GameObject pickedObject = null;
     public ScriptDoorOfice prueba;
+    public GameObject interaccion;
 
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        interaccion.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -70,6 +72,7 @@ public class Object1 : MonoBehaviour
         }
         if (other.gameObject.CompareTag("object"))
             {
+
             if (Input.GetKey(KeyCode.E) && pickedObject==null)
             {
                 
@@ -90,6 +93,8 @@ public class Object1 : MonoBehaviour
         }
         if (other.gameObject.CompareTag("key"))
         {
+            interaccion.SetActive(true);
+
             if (Input.GetKey(KeyCode.E) && pickedObject == null)
             {
 
@@ -110,9 +115,14 @@ public class Object1 : MonoBehaviour
 
 
             }
+
+        }
+        else
+        {
+            interaccion.SetActive(false);
         }
 
-
+         
     }
     
 }

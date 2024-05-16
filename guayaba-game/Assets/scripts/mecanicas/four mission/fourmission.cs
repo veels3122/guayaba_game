@@ -98,7 +98,7 @@ public class fourmission : MonoBehaviour
 
                 pickedObject = other.gameObject;
                 panel1.SetActive(true);
-                texto1.text = "este contenedor tiene sustancias de agrandamiento de guayabas de forma ilicita, tiene sustancias bastante peligrosas";
+                texto1.text = "Aunque el hongo se puede dar naturalmente, mucho fertilizante nitrogenado como este potencia el moho gris... ";
                 panelinteraccion2.SetActive(true);
             }
 
@@ -118,7 +118,7 @@ public class fourmission : MonoBehaviour
 
                 pickedObject = other.gameObject;
                 panel1.SetActive(true);
-                texto1.text = "esta guayaba se nota que fue alterada por sustancias, fue alterada desde su nacimiento por lo que veo";
+                texto1.text = "Esta guayaba esta muy grande, y se ve normal por fuera pero por dentro esta infectada, tal y como dijo el señor de la ciudad...";
                 panelinteraccion2.SetActive(true);
             }
 
@@ -138,7 +138,7 @@ public class fourmission : MonoBehaviour
 
                 pickedObject = other.gameObject;
                 panel1.SetActive(true);
-                texto1.text = "uy, esta guayaba tiene gusanos por dentro, toca tener mas cuidado con estas sirven de prueba para demostrar el virus que existe hoy dia en las guayabas";
+                texto1.text = "Parece que esta guayaba tiene una enfermedad muy comun llamada Botritis cinerea...";
                 panelinteraccion2.SetActive(true);
             }
 
@@ -158,7 +158,7 @@ public class fourmission : MonoBehaviour
 
                 pickedObject = other.gameObject;
                 panel1.SetActive(true);
-                texto1.text = "esta guayaba esta bastante podrida, como si el experimento les hubiera salido mal, esta contiene como una sustancia desidratante, y que la pudre al poco tiempo";
+                texto1.text = "Parece ser que esta fue la primer infectada, ya que la enfermedad esta mas avanzada...";
                 panelinteraccion2.SetActive(true);
             }
 
@@ -178,7 +178,7 @@ public class fourmission : MonoBehaviour
 
                 pickedObject = other.gameObject;
                 panel1.SetActive(true);
-                texto1.text = "estas cajas, contienen las sustancias que contaminan a las guayabas, y son las que estan pudriendo al resto de competencia";
+                texto1.text = "Uh parece ser que debido a las condiciones en que se encuentra esta caja es que ela hongo se anida, debemos cambiar esas condiciones en el cultivo...";
                 panelinteraccion2.SetActive(true);
             }
 

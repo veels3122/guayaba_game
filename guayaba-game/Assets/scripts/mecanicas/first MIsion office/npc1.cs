@@ -129,7 +129,7 @@ public class npc1 : MonoBehaviour
                 Npc.SetActive(true);
                 ayuda = true;
                 jugador.enabled = true;
-                TextoNpc1.text = "las vi al lado de su escritorio";
+                TextoNpc1.text = "las vi en su escritorio";
                 TextoPlayer.text = "muchas gracias";
                 Simbolayuda.SetActive(false);
                 key = true;

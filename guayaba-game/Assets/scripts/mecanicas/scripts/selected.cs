@@ -53,15 +53,8 @@ public class selected : MonoBehaviour
                
 
             }
-            if(hit.collider.tag == "key")
-            {
-
-
-                SelectedObject(hit.transform);
-                
-
-
-            }
+             
+           
 
             if (hit.collider.tag == "DoorOfice")
             {
@@ -181,7 +174,7 @@ public class selected : MonoBehaviour
         {
             ultimoreconocido.GetComponent<Renderer>().material.color = Color.clear;
             ultimoreconocido = null;
-            Panel_Guayaba_infect.SetActive(false);
+            Panel_Guayaba_infect.SetActive(false); 
             Panel_selected.SetActive(false);
         }
     }
