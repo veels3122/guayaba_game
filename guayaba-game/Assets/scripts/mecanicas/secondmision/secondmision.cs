@@ -38,7 +38,7 @@ public class secondmision : MonoBehaviour
 
 
         NumDeObjetivos = GameObject.FindGameObjectsWithTag("guayaba_infect").Length;
-        TextMision2.text = "ayudame a recoger las guayabas infectadas" +
+        TextMision2.text = "¡¡Ayudame!! a recoger las Guayabas infectadas" +
                            "\n Restantes: " + NumDeObjetivos;
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<playercontroller>();
         SimbolMision.SetActive(true);
@@ -76,7 +76,7 @@ public class secondmision : MonoBehaviour
             No();
         }
         NumDeObjetivos = GameObject.FindGameObjectsWithTag("guayaba_infect").Length;
-        TextMision2.text = "ayudame a recoger las guayabas infectadas" +
+        TextMision2.text = "¡¡Ayudame!! a recoger las Guayabas infectadas" +
                            "\n Restantes: " + NumDeObjetivos;
 
         if (NumDeObjetivos <= 0)
@@ -98,7 +98,7 @@ public class secondmision : MonoBehaviour
             puntajeMisionText.text = "Puntaje: " + ((int)puntajeMision);
             // Mostrar mensaje de misión completada
 
-            TextMision2.text = "bien hecho ahora a la tienda para buscar mas pruebas \n presiona ESC para moverte a ella";
+            TextMision2.text = "¡Bien hecho! ahora a la TIENDA para buscar más pruebas \n presiona ESC para ir al MAPA y dirigirte a ese escenario.";
             
             
             if (NumDeObjetivos <= 0 && Input.GetKeyDown(KeyCode.T))

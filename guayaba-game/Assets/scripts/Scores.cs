@@ -15,8 +15,9 @@ public class Score : MonoBehaviour
 
     public void AgregarPuntaje(float puntaje)
     {
-        puntajeTotal += puntaje;
         puntajeMisionActual += puntaje; // Agregar el puntaje también al puntaje de la misión actual
+        puntajeTotal += puntaje;
+        
     }
 
     public float ObtenerPuntajeTotal()

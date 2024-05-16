@@ -34,7 +34,7 @@ public class FirstMision : MonoBehaviour
 
         panel.SetActive(false);
         NumObjetivos= GameObject.FindGameObjectsWithTag("Table").Length;
-        TextMision.text = "encuentra las tablas que estan flojas" +
+        TextMision.text = "Busca en los alrededores de la granja: ¡Las tablas que estan sueltas!" +
             "\n restantes: " + NumObjetivos;
         
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<playercontroller>();
@@ -79,7 +79,7 @@ public class FirstMision : MonoBehaviour
         if (pasarmision == false)
         {
             NumObjetivos = GameObject.FindGameObjectsWithTag("Table").Length;
-            TextMision.text = "Encuentra las tablas que estan flojas" +
+            TextMision.text = "Busca en los alrededores de la granja: ¡Las tablas que estan sueltas!" +
                 "\n restantes: " + NumObjetivos;
         }
         if (NumObjetivos == 0)
@@ -109,7 +109,7 @@ public class FirstMision : MonoBehaviour
             //float puntajeTotal = score.ObtenerPuntajeTotal();
             //float TiempoTotal = mostrarTiempo.ObtenerTiempoTotalGlobal();
 
-            TextMision.text = "Bien hecho, ahora presiona ´T´ para la siguiente mision";
+            TextMision.text = "¡Bien hecho!, ahora presiona la tecla ´T´ para darte mas Pistas";
 
             Input.GetKeyDown(KeyCode.T);
             TextMision.text = "Busca al granjero";
