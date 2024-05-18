@@ -36,7 +36,6 @@ public class Interact2 : MonoBehaviour
             {
                 Panel_Guayaba_nomadurada.SetActive(true);
                 SelectedObjectNG(hit.transform);
-                OnGUI();
             }
            
 
@@ -64,21 +63,7 @@ public class Interact2 : MonoBehaviour
 }
     }
     
-    private void OnGUI()
-    { 
-        Rect rect = new Rect(Screen.width / 2, Screen.height / 2, puntero.width, puntero.height);
-        GUI.DrawTexture(rect, puntero);
-
-        if (ultimoreconocido)
-        {
-            TextDetectFalse.SetActive(true);
-        }
-        else
-        {
-            TextDetectFalse.SetActive(false);
-        }
-
-    }
+    
 
 
 }

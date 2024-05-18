@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Object1 : MonoBehaviour
 {
-    Animator anim;
+    
 
     public GameObject DoorRFalse;
     public GameObject DoorR;
@@ -14,23 +14,66 @@ public class Object1 : MonoBehaviour
     public GameObject Handpoint;
     private GameObject pickedObject = null;
     public ScriptDoorOfice prueba;
+    public GameObject interaccion;
+    public GameObject mano;
+   
+    public GameObject soltar;
 
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        
+        interaccion.SetActive(false);
     }
     // Update is called once per frame
     void Update()
     {
         Soltar();
         
+        if(pickedObject == null)
+        {
+            mano.SetActive(false);
+        }
+        if(pickedObject != null)
+        {
+            mano.SetActive(true);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("key"))
+        {
+            mano.SetActive(true);
+            interaccion.SetActive(true);
+            
+        }
+        if (other.gameObject.CompareTag("Door"))
+        {
+            mano.SetActive(true);
+            interaccion.SetActive(true);
 
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("key"))
+        {
+            interaccion.SetActive(false);
+            
+        }
+        if (other.gameObject.CompareTag("Door"))
+        {
+            mano.SetActive(false);
+            interaccion.SetActive(false);
+
+        }
     }
 
     public void Soltar()
     {
         if(pickedObject != null)
         {
+            soltar.SetActive(true);
             if (Input.GetKey("r"))
             {
                 pickedObject.GetComponent<Rigidbody>().useGravity = true;
@@ -39,10 +82,14 @@ public class Object1 : MonoBehaviour
                 pickedObject.GetComponent<Rigidbody>().position = Vector3.zero;
                 pickedObject.gameObject.transform.SetParent(null);
                 pickedObject = null;
-                
-                   
-                
+                mano.SetActive(false);
+
+
             }
+        }
+        if(pickedObject == null)
+        {
+            soltar.SetActive(false) ;
         }
     }
     private void OnTriggerStay(Collider other)
@@ -70,6 +117,7 @@ public class Object1 : MonoBehaviour
         }
         if (other.gameObject.CompareTag("object"))
             {
+
             if (Input.GetKey(KeyCode.E) && pickedObject==null)
             {
                 
@@ -90,6 +138,8 @@ public class Object1 : MonoBehaviour
         }
         if (other.gameObject.CompareTag("key"))
         {
+          
+
             if (Input.GetKey(KeyCode.E) && pickedObject == null)
             {
 
@@ -110,9 +160,11 @@ public class Object1 : MonoBehaviour
 
 
             }
+
         }
+        
 
-
+         
     }
     
 }
