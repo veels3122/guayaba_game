@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
 public class thirdmission : MonoBehaviour
 {
+    public MostrarTiempo mostrarTiempo;
+    private Score score;
+    public Text puntajeMisionText;
+
+
     public bool mission_3; 
     public GameObject panelmission;
     public TextMeshProUGUI textomission;
@@ -22,10 +28,14 @@ public class thirdmission : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Variable para implementar el Score
+        score = new Score();
+        ////////////////////////////////////
+
         panelmission.SetActive(false);
         simbolnpc.SetActive(true);
         numobjetos = GameObject.FindGameObjectsWithTag("pruebas").Length;
-        textomission.text = "encuentre y agarre los objetos que se ven de dudosa procedencia"+
+        textomission.text = "Encuentre y agarre los objetos que se ven de dudosa procedencia"+
             "\n restantes: " + numobjetos;
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<playercontroller>();
         mission_3 = false;
@@ -55,8 +65,8 @@ public class thirdmission : MonoBehaviour
             panelinteraccion.SetActive(false);
             panel1.SetActive(true);
             panel2.SetActive(true);
-            texto1.text = "esta listo para encontrar los objetos sospechosos?";
-            texto2.text = "presiona 'Y'- claro vamos a encontrar de donde vienen esas guayabas \n presiona 'X'-dame un momento ";
+            texto1.text = "Esta listo para encontrar los objetos sospechosos?";
+            texto2.text = "Presiona 'Y'- Claro vamos a encontrar de donde vienen esas guayabas \n presiona 'X'- Dame un momento ";
 
         }
         if(panel1 == true &&panel2 == true && jugadorcerca == true &&Input.GetKeyDown(KeyCode.Y))
@@ -81,13 +91,31 @@ public class thirdmission : MonoBehaviour
         if (mission_3 == false)
         {
             numobjetos = GameObject.FindGameObjectsWithTag("pruebas").Length;
-            textomission.text = "encuentre y agarre los objetos que se ven de dudosa procedencia" +
+            textomission.text = "Encuentre y agarre los objetos que se ven de dudosa procedencia" +
                 "\n restantes: " + numobjetos;
         }
         if(numobjetos == 0)
         {
+            // Pausa el contador del tiempo
+            mostrarTiempo.PausarTiempo(true);
+            // Obtener el tiempo transcurrido en segundos
+            float tiempoActual = mostrarTiempo.ObtenerTiempoActual();
+            // Obtener el tiempo total global desde MostrarTiempo
+            float tiempoGlobal = mostrarTiempo.ObtenerTiempoTotalGlobal();
+            // Calcular el puntaje para esta misión usando el tiempo global
+            float puntajeMision = score.CalcularPuntaje(tiempoActual);
+            // Agregar el puntaje de esta misión al puntaje total
+            score.AgregarPuntaje(puntajeMision);
+            // Mostrar el tiempo actual en el registro
+            int minutos = Mathf.FloorToInt(tiempoActual / 60);
+            int segundos = Mathf.FloorToInt(tiempoActual % 60);
+            Debug.Log("Timer: " + minutos.ToString("00") + ":" + segundos.ToString("00"));
+            puntajeMisionText.text = "Puntaje: " + ((int)puntajeMision);
+            // Mostrar mensaje de misión completada
+
+
             mission_3 = true;
-            textomission.text = "bien hecho con esto tenemos lo suficiente para detener esa plaga en las guayabas \n presiona 'ESC' y dirigete al laboratorio en el mapa ";
+            textomission.text = "¡Bien hecho! con esto tenemos lo suficiente para detener esa plaga en las guayabas \n presiona 'ESC' y dirigete al laboratorio en el mapa ";
         }
     }
     private void OnTriggerEnter(Collider other)

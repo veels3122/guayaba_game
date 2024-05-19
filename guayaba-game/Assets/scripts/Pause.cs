@@ -66,7 +66,8 @@ public class Pause : MonoBehaviour
 
     public void SalirDelJuego()
     {
-        Application.Quit();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Login");
+        //Application.Quit();
     }
 
     public void IrAlMapa(string Mapa)

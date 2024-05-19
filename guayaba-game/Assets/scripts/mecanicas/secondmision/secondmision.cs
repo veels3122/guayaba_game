@@ -7,6 +7,11 @@ using TMPro;
 
 public class secondmision : MonoBehaviour
 {
+    public MostrarTiempo mostrarTiempo;
+    private Score score;
+    public Text puntajeMisionText;
+
+
     public Pause pause;
     public GameObject panel;
     public GameObject SimbolMision;
@@ -27,8 +32,13 @@ public class secondmision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Variable para implementar el Score
+        score = new Score();
+        ////////////////////////////////////
+
+
         NumDeObjetivos = GameObject.FindGameObjectsWithTag("guayaba_infect").Length;
-        TextMision2.text = "ayudame a recoger las guayabas infectadas" +
+        TextMision2.text = "¡¡Ayudame!! a recoger las Guayabas infectadas" +
                            "\n Restantes: " + NumDeObjetivos;
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<playercontroller>();
         SimbolMision.SetActive(true);
@@ -66,21 +76,36 @@ public class secondmision : MonoBehaviour
             No();
         }
         NumDeObjetivos = GameObject.FindGameObjectsWithTag("guayaba_infect").Length;
-        TextMision2.text = "ayudame a recoger las guayabas infectadas" +
+        TextMision2.text = "¡¡Ayudame!! a recoger las Guayabas infectadas" +
                            "\n Restantes: " + NumDeObjetivos;
+
         if (NumDeObjetivos <= 0)
         {
-            TextMision2.text = "bien hecho ahora a la tienda para buscar mas pruebas \n presiona ESC para moverte a ella";
+            // Pausa el contador del tiempo
+            mostrarTiempo.PausarTiempo(true);
+            // Obtener el tiempo transcurrido en segundos
+            float tiempoActual = mostrarTiempo.ObtenerTiempoActual();
+            // Obtener el tiempo total global desde MostrarTiempo
+            float tiempoGlobal = mostrarTiempo.ObtenerTiempoTotalGlobal();
+            // Calcular el puntaje para esta misión usando el tiempo global
+            float puntajeMision = score.CalcularPuntaje(tiempoActual);
+            // Agregar el puntaje de esta misión al puntaje total
+            score.AgregarPuntaje(puntajeMision);
+            // Mostrar el tiempo actual en el registro
+            int minutos = Mathf.FloorToInt(tiempoActual / 60);
+            int segundos = Mathf.FloorToInt(tiempoActual % 60);
+            Debug.Log("Timer: " + minutos.ToString("00") + ":" + segundos.ToString("00"));
+            puntajeMisionText.text = "Puntaje: " + ((int)puntajeMision);
+            // Mostrar mensaje de misión completada
+
+            TextMision2.text = "¡Bien hecho! ahora a la TIENDA para buscar más pruebas \n presiona ESC para ir al MAPA y dirigirte a ese escenario.";
+            
+            
             if (NumDeObjetivos <= 0 && Input.GetKeyDown(KeyCode.T))
             {
                 PanelMision2.SetActive(false);
                 pause.IsPaused = true;
-                
-
-                
-
-
-
+             
             }
 
 
